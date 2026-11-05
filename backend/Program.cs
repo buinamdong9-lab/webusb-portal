@@ -160,6 +160,9 @@ if (app.Environment.IsDevelopment())
 // 7. Tải bộ cài đặt phần mềm USB An Toàn (Công khai cho người dùng cài đặt - BUG-13 & BUG-17)
 app.MapGet("/api/download/setup", (IConfiguration config) =>
 {
+    string downloadUrl = Environment.GetEnvironmentVariable("SETUP_DOWNLOAD_URL") ?? config["WebUsbSettings:SetupDownloadUrl"] ?? "";
+    if (!string.IsNullOrWhiteSpace(downloadUrl)) return Results.Redirect(downloadUrl);
+
     string customPath = Environment.GetEnvironmentVariable("SETUP_EXE_PATH") ?? config["WebUsbSettings:SetupExePath"] ?? "";
     string[] searchPaths = new[]
     {
