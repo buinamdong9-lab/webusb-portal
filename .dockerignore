@@ -1,0 +1,8 @@
+backend/bin/
+backend/obj/
+backend/Properties/
+cloudflared.exe
+*.db
+*.log
+.git/
+
