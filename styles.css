@@ -104,3 +104,30 @@ body {
   box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
 }
 
+/* Bảng so sánh trực quan */
+table tr:hover td {
+  background-color: rgba(30, 41, 59, 0.4);
+}
+code {
+  font-family: var(--font-mono);
+}
+
+/* Hoạt ảnh mô phỏng tương tác 4 bước */
+.sim-terminal {
+  background: rgba(2, 6, 23, 0.95);
+  border: 1px solid rgba(51, 65, 85, 0.7);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.sim-pulse {
+  animation: pulseSim 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseSim {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.sim-glow-emerald {
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+}

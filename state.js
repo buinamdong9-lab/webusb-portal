@@ -3,7 +3,7 @@
  * @module WebUSB/State
  * @description Quản lý máy trạng thái FSM duy nhất và phân phối sự kiện giao diện.
  * @stateDepends AppState
- * @security Đảm bảo không xảy ra đụng độ Race Condition hoặc nhảy cóc trạng thái.
+ * @security Đảm bảo luồng trạng thái an toàn, nhất quán.
  */
 
 import { AppState } from "./constants.js";
@@ -20,13 +20,11 @@ class StateManager {
       totalFiles: 0,
       threats: [],
       safetyScore: 100,
-      usbSerial: "",
-      paymentId: "",
       errorCode: null,
       errorMessage: "",
     };
 
-    /** @type {Array<function(string, object): void>} Danh sách callback theo dõi trạng thái */
+    /** @type {Array<function(string, object): void>} Danh sách subscriber */
     this._subscribers = [];
   }
 
@@ -47,7 +45,7 @@ class StateManager {
   }
 
   /**
-   * Lấy bản sao dữ liệu phiên (bí danh cho getSessionData để chống lỗi gọi tắt).
+   * Bí danh cho getSessionData.
    * @returns {object} Dữ liệu phiên.
    */
   getSession() {
@@ -57,7 +55,6 @@ class StateManager {
   /**
    * Đăng ký hàm lắng nghe khi trạng thái thay đổi.
    * @param {function(string, object): void} callback - Hàm thực thi khi state đổi.
-   * @returns {void}
    */
   subscribe(callback) {
     if (typeof callback === "function") {
@@ -77,7 +74,6 @@ class StateManager {
       return false;
     }
 
-    // Cập nhật dữ liệu phiên
     this._sessionData = {
       ...this._sessionData,
       ...partialData,
@@ -88,7 +84,6 @@ class StateManager {
 
     console.log(`[FSM] Chuyển trạng thái: ${previousState} ➔ ${newState}`);
 
-    // Bắn sự kiện tới toàn bộ subscriber
     for (const notify of this._subscribers) {
       try {
         notify(this._currentState, this.getSessionData());
@@ -102,7 +97,6 @@ class StateManager {
 
   /**
    * Đặt lại trạng thái về ban đầu (IDLE).
-   * @returns {void}
    */
   reset() {
     this.transition(AppState.IDLE, {
@@ -111,8 +105,6 @@ class StateManager {
       totalFiles: 0,
       threats: [],
       safetyScore: 100,
-      usbSerial: "",
-      paymentId: "",
       errorCode: null,
       errorMessage: "",
     });
@@ -120,4 +112,3 @@ class StateManager {
 }
 
 export const appState = new StateManager();
-
