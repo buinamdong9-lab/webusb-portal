@@ -20,7 +20,7 @@ export const CONFIG = {
   SERVICE: {
     NAME: "Cổng An Toàn USB Trực Tuyến",
     VERSION: "3.2.0-Community",
-    DOWNLOAD_URL: "https://drive.google.com/drive/folders/1fybfKlSIiO8s43qsBf81UUKI2WJHF2Sp?usp=sharing",
+    DOWNLOAD_URL: "https://drive.google.com/file/d/1WK3OieckL78YaH7qLW67YQnKymYMqfr0/view?usp=sharing",
     SCAN_MAX_DEPTH: 8,
     UI_THROTTLE_MS: 100,
   },
