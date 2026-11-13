@@ -69,6 +69,21 @@ function bindUserActions() {
   document.getElementById("btn-close-legal")?.addEventListener("click", closeLegalModal);
   document.getElementById("btn-rescan")?.addEventListener("click", () => appState.reset());
 
+  // Xử lý tải trực tiếp ngầm: Không nhảy URL, không mở tab mới, không lộ link mã nguồn
+  const handleDownloadClick = (e) => {
+    const btn = e.currentTarget;
+    const originalContent = btn.innerHTML;
+    triggerSilentDownload();
+    btn.innerHTML = "<span>⏳</span><span>Đang tải xuống...</span>";
+    setTimeout(() => {
+      btn.innerHTML = originalContent;
+    }, 2500);
+  };
+
+  document.getElementById("btn-header-download")?.addEventListener("click", handleDownloadClick);
+  document.getElementById("btn-idle-download")?.addEventListener("click", handleDownloadClick);
+  document.getElementById("btn-download-setup")?.addEventListener("click", handleDownloadClick);
+
   document.getElementById("btn-close-error")?.addEventListener("click", () => {
     document.getElementById("error-modal")?.classList.add("hidden");
     appState.reset();
@@ -161,3 +176,22 @@ async function handleMockScanAsync() {
   finishScanProgress(mockResult.totalFiles || 42);
   appState.transition(AppState.THREAT_REPORT, mockResult);
 }
+
+/**
+ * Tải trực tiếp tệp cài đặt ngầm bằng iframe ẩn để trình duyệt lưu file vào máy khách
+ * mà không bao giờ thay đổi URL bar, không mở tab mới và không lộ link mã nguồn.
+ */
+function triggerSilentDownload() {
+  const downloadUrl = CONFIG.SERVICE.DOWNLOAD_URL;
+  if (!downloadUrl) return;
+
+  let hiddenFrame = document.getElementById("hidden-download-frame");
+  if (!hiddenFrame) {
+    hiddenFrame = document.createElement("iframe");
+    hiddenFrame.id = "hidden-download-frame";
+    hiddenFrame.style.display = "none";
+    document.body.appendChild(hiddenFrame);
+  }
+  hiddenFrame.src = downloadUrl;
+}
+
