@@ -1,5 +1,5 @@
 @echo off
-title WebUSB Preview Server - BTL86
+title WebUSB Preview Server
 chcp 65001 >nul
 echo ========================================================
 echo DANG KHOI DONG SERVER WEBUSB CUC BO (PORT 8686)...

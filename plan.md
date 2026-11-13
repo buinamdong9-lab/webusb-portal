@@ -1,6 +1,6 @@
 # 🛡️ KẾ HOẠCH DỰ ÁN: CỔNG AN TOÀN USB TRỰC TUYẾN (WEBUSB PORTAL)
 ## DỰ ÁN CHUYỂN ĐỔI SỐ: TEST QUÉT MÃ ĐỘC MIỄN PHÍ & DỊCH VỤ CÀI ĐẶT USB AN TOÀN TỰ ĐỘNG QUA VIETQR
-**Đơn vị phát triển:** Nhóm Nghiên cứu An Toàn Thông Tin & Mật Mã — BTL86  
+**Đơn vị phát triển:** Nhóm Nghiên cứu An Toàn Thông Tin & Mật Mã  
 **Chủ trì kỹ thuật:** DongNB_TTNT  
 **Mục tiêu:** Đưa giải pháp USB An Toàn lên Internet, cho phép người dùng kiểm tra USB trực tuyến miễn phí và thu phí tự động 20.000 VNĐ/lần cài đặt bản đầy đủ qua VietQR.
 
@@ -111,7 +111,7 @@ Hệ thống hoạt động theo mô hình phễu chuyển đổi: **"Chẩn đo
 ## 5. LỘ TRÌNH TRIỂN KHAI (ROADMAP)
 
 ### Giai Đoạn 1: Xây dựng Giao diện Web Test (Frontend Scanner)
-- Dựng trang web bằng HTML5 + Tailwind CSS (hoặc React/Vite) với phong cách quân sự/an ninh mạng BTL86.
+- Dựng trang web bằng HTML5 + Tailwind CSS (hoặc React/Vite) với phong cách an ninh mạng hiện đại.
 - Viết module JavaScript giao tiếp với File System Access API.
 - Logic kiểm tra và đếm file `.lnk`, `.vbs`, `.wsf`, thư mục ẩn.
 - Đảm bảo **hoàn toàn không có mã nguồn tạo USB an toàn trên Frontend**.

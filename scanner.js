@@ -13,7 +13,7 @@ const OS_WHITELIST = new Set([
   "system volume information", "$recycle.bin", "recovery", "$sysreset", "config.msi"
 ]);
 
-const BTL86_LEGITIMATE = new Set([
+const SAFE_USB_LEGITIMATE = new Set([
   "app", "du_lieu_chung", "vung_bao_mat", ".sec_v2_header",
   ".sec_license", ".sec_lic_backup", "cuu_ho_usb_antoan.bat", "attt.ico"
 ]);
@@ -90,7 +90,7 @@ export async function scanDirectoryForThreatsAsync(dirHandle, onProgress, curren
   try {
     for await (const entry of dirHandle.values()) {
       const lower = entry.name.toLowerCase();
-      if (OS_WHITELIST.has(lower) || BTL86_LEGITIMATE.has(lower)) continue;
+      if (OS_WHITELIST.has(lower) || SAFE_USB_LEGITIMATE.has(lower)) continue;
 
       stateRef.totalFiles++;
       const now = Date.now();
@@ -162,8 +162,8 @@ async function analyzeFileEntryAsync(fileHandle) {
   return null;
 }
 
-export function calculateQuizSafetyScore(threats, isBtl86Protected = false) {
-  if (isBtl86Protected && (!threats || threats.length === 0)) {
+export function calculateQuizSafetyScore(threats, isProtected = false) {
+  if (isProtected && (!threats || threats.length === 0)) {
     return 100;
   }
   let score = 100;

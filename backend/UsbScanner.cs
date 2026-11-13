@@ -1,7 +1,7 @@
 // ============================================================================
 // @file UsbScanner.cs
 // @module WebUsbBackend/UsbScanner
-// @description Bộ máy chẩn đoán an toàn USB thông minh, phân tích mã độc và nhận diện cấu trúc bảo vệ BTL86.
+// @description Bộ máy chẩn đoán an toàn USB thông minh, phân tích mã độc và nhận diện cấu trúc bảo vệ an toàn.
 // @stateDepends None
 // @security Kiểm tra toàn diện phần cứng USB, chống nhận diện nhầm thư mục hệ thống Windows.
 // ============================================================================
@@ -28,7 +28,7 @@ public class UsbScanResult
     public List<ThreatItem> Threats { get; set; } = new();
     public int SafetyScore { get; set; } = 100;
     public string UsbSerial { get; set; } = "";
-    public bool IsBtl86Protected { get; set; }
+    public bool IsProtected { get; set; }
     public string ProtectionStatus { get; set; } = "";
     public string? Error { get; set; }
 }
@@ -44,7 +44,7 @@ public static class UsbScanner
         "Config.Msi"
     };
 
-    private static readonly HashSet<string> Btl86LegitimateFiles = new(StringComparer.OrdinalIgnoreCase)
+    private static readonly HashSet<string> SafeUsbLegitimateFiles = new(StringComparer.OrdinalIgnoreCase)
     {
         "App",
         "Du_Lieu_Chung",
@@ -67,8 +67,8 @@ public static class UsbScanner
         try
         {
             var rootDir = new DirectoryInfo(drive.RootDirectory.FullName);
-            bool isProtected = CheckBtl86Signatures(rootDir, out string serial);
-            result.IsBtl86Protected = isProtected;
+            bool isProtected = CheckSafeUsbSignatures(rootDir, out string serial);
+            result.IsProtected = isProtected;
             result.UsbSerial = !string.IsNullOrEmpty(serial) ? serial : ResolveDefaultSerial(drive);
 
             int fileCount = 0;
@@ -77,7 +77,7 @@ public static class UsbScanner
 
             CalculateScore(result);
             result.Success = true;
-            result.ProtectionStatus = isProtected ? "Đã kích hoạt Ironclad Fortress BTL86" : "Chưa kích hoạt bảo vệ BTL86";
+            result.ProtectionStatus = isProtected ? "Đã kích hoạt Ironclad Fortress" : "Chưa kích hoạt bảo vệ an toàn";
         }
         catch (Exception ex)
         {
@@ -88,7 +88,7 @@ public static class UsbScanner
         return result;
     }
 
-    private static bool CheckBtl86Signatures(DirectoryInfo rootDir, out string serial)
+    private static bool CheckSafeUsbSignatures(DirectoryInfo rootDir, out string serial)
     {
         serial = "";
         int markerScore = 0;
@@ -145,7 +145,7 @@ public static class UsbScanner
     {
         string label = drive.VolumeLabel;
         if (!string.IsNullOrWhiteSpace(label)) return label.Replace(" ", "_").ToUpper();
-        return drive.Name.Replace(":", "").Replace("\\", "") + "_USB86";
+        return drive.Name.Replace(":", "").Replace("\\", "") + "_SAFEUSB";
     }
 
     private static void ScanFolderRecursive(DirectoryInfo dir, List<ThreatItem> threats, ref int fileCount, bool isProtected, int maxDepth, int currentDepth)
@@ -174,8 +174,8 @@ public static class UsbScanner
     {
         if (currentDepth == 0) return;
 
-        // Bỏ qua thư mục hợp lệ của BTL86 (Vung_Bao_Mat được thiết kế để ẩn bảo vệ)
-        if (isProtected && Btl86LegitimateFiles.Contains(dir.Name)) return;
+        // Bỏ qua thư mục hợp lệ (Vung_Bao_Mat được thiết kế để ẩn bảo vệ)
+        if (isProtected && SafeUsbLegitimateFiles.Contains(dir.Name)) return;
 
         bool isHidden = dir.Attributes.HasFlag(FileAttributes.Hidden) || dir.Attributes.HasFlag(FileAttributes.System);
         if (isHidden)
@@ -196,8 +196,8 @@ public static class UsbScanner
         string name = file.Name;
         string ext = file.Extension.ToLower();
 
-        // Bỏ qua các tệp thành phần hợp lệ của BTL86
-        if (isProtected && Btl86LegitimateFiles.Contains(name)) return;
+        // Bỏ qua các tệp thành phần hợp lệ
+        if (isProtected && SafeUsbLegitimateFiles.Contains(name)) return;
 
         if (name.Equals("autorun.inf", StringComparison.OrdinalIgnoreCase))
         {
@@ -268,7 +268,7 @@ public static class UsbScanner
         }
         catch { }
 
-        // Tệp autorun chỉ chứa icon/label như của BTL86 là hoàn toàn vô hại
+        // Tệp autorun chỉ chứa icon/label là hoàn toàn vô hại
         return null;
     }
 
@@ -280,8 +280,8 @@ public static class UsbScanner
             score -= item.DeductPoints;
         }
 
-        // Nếu là USB BTL86 và không có mối nguy độc hại thực sự nào
-        if (result.IsBtl86Protected && result.Threats.Count == 0)
+        // Nếu là USB đã bảo vệ và không có mối nguy độc hại thực sự nào
+        if (result.IsProtected && result.Threats.Count == 0)
         {
             score = 100;
         }

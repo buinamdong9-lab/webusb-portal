@@ -255,7 +255,7 @@ public class PaymentStore
     public static string? ExtractOrderIdFromContent(string? content)
     {
         if (string.IsNullOrWhiteSpace(content)) return null;
-        var match = Regex.Match(content, @"\b(?:USB|ORD|BTL86)?[\s_]*(ORD[A-Z0-9]{5,8})\b", RegexOptions.IgnoreCase);
+        var match = Regex.Match(content, @"\b(?:USB|ORD)?[\s_]*(ORD[A-Z0-9]{5,8})\b", RegexOptions.IgnoreCase);
         if (match.Success) return match.Groups[1].Value.ToUpper();
         var fallback = Regex.Match(content, @"\bUSB[\s_]+([A-Z0-9]{5,10})\b", RegexOptions.IgnoreCase);
         if (!fallback.Success) return null;
@@ -263,7 +263,7 @@ public class PaymentStore
         return val.StartsWith("ORD") ? val : "ORD" + val;
     }
 
-    private static string ComputeHash(string text) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(text + "|BTL86_SALT")));
+    private static string ComputeHash(string text) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(text + "|USB_ANTOAN_SALT")));
 
     private static ActivationOrder MapOrderFromReader(SqliteDataReader reader)
     {

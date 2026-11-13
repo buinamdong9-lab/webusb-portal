@@ -1,7 +1,7 @@
 @echo off
-title Cong Ket Noi Truc Tuyen SePay Webhook - BTL86
+title Cong Ket Noi Truc Tuyen SePay Webhook
 echo =========================================================================
-echo    BO TU LENH 86 - HE THONG MO CONG INTERNET CHO WEBHOOK SEPAY
+echo    HE THONG MO CONG INTERNET CHO WEBHOOK SEPAY
 echo =========================================================================
 echo.
 echo [*] Dang mo duong truyen ket noi Internet cho cong 8686...

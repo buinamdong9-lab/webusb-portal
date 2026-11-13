@@ -1,7 +1,7 @@
 /**
  * @file guide.js
  * @module WebUSB/Guide
- * @description Quản lý modal Hướng Dẫn Sử Dụng Chi Tiết cho USB An Toàn (BTL86).
+ * @description Quản lý modal Hướng Dẫn Sử Dụng Chi Tiết cho USB An Toàn.
  * @author BUI NAM DONG Senior Dev
  * @copyright Copyright © 2026 BUI NAM DONG Senior Dev. All rights reserved.
  * @security Module thuần UI Client-side, không chứa dữ liệu nhạy cảm.

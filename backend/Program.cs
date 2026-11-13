@@ -37,7 +37,7 @@ ConfigureStaticFiles(app, builder.Environment.ContentRootPath);
 var limiter = new AtomicRateLimiter();
 
 // 1. Health Check
-app.MapGet("/api/health", () => Results.Ok(new { status = "HEALTHY", service = "WebUSB Backend Portal — BTL86", version = "2.7.0", serverTime = DateTime.UtcNow }));
+app.MapGet("/api/health", () => Results.Ok(new { status = "HEALTHY", service = "WebUSB Backend Portal", version = "2.7.0", serverTime = DateTime.UtcNow }));
 
 // 2. Tạo đơn hàng kích hoạt mới (NEW-01: Atomic Rate-limiting chống DoS SQLite & Race Condition)
 app.MapPost("/api/order/create", (HttpContext ctx, CreateOrderRequest req, PaymentStore store) =>
@@ -45,7 +45,7 @@ app.MapPost("/api/order/create", (HttpContext ctx, CreateOrderRequest req, Payme
     string ip = ctx.Connection.RemoteIpAddress?.ToString() ?? "local";
     if (!limiter.Allow($"order_{ip}", 15, TimeSpan.FromMinutes(5))) return Results.StatusCode(StatusCodes.Status429TooManyRequests);
 
-    string serial = string.IsNullOrWhiteSpace(req.UsbSerial) ? "GENERIC86" : req.UsbSerial.Trim().ToUpper();
+    string serial = string.IsNullOrWhiteSpace(req.UsbSerial) ? "GENERIC_USB" : req.UsbSerial.Trim().ToUpper();
     var order = store.CreateOrder(serial, req.ClientSecret, 20000);
     return Results.Ok(new { success = true, orderId = order.OrderId, amount = order.Amount, memo = $"USB {order.OrderId}", clientSecret = order.ClientSecret, expiresAt = order.ExpiresAt });
 });
@@ -225,7 +225,7 @@ static void ConfigureStaticFiles(WebApplication app, string contentRoot)
 string port = Environment.GetEnvironmentVariable("PORT") ?? builder.Configuration["WebUsbSettings:Port"] ?? "8686";
 string host = Environment.GetEnvironmentVariable("PORT") != null ? "0.0.0.0" : "localhost";
 string bindUrl = $"http://{host}:{port}";
-Console.WriteLine($"[OK] WebUSB Production-Hardened Backend BTL86 tại: {bindUrl}");
+Console.WriteLine($"[OK] WebUSB Production-Hardened Backend tại: {bindUrl}");
 app.Run(bindUrl);
 
 namespace WebUsbBackend

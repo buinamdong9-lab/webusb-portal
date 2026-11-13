@@ -1,7 +1,7 @@
 // ============================================================================
 // @file LicenseSigner.cs
 // @module WebUsbBackend/LicenseSigner
-// @description Engine ký số bản quyền RSA-2048 bất đối xứng chuẩn BTL86 từ Server.
+// @description Engine ký số bản quyền RSA-2048 bất đối xứng từ Server.
 // @stateDepends None
 // @security Khóa bí mật chỉ được nạp trong bộ nhớ server, cấm trả ra client.
 // ============================================================================

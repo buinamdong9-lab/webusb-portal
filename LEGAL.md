@@ -1,5 +1,5 @@
 # CHÍNH SÁCH BẢO MẬT, ĐIỀU KHOẢN SỬ DỤNG VÀ MIỄN TRỪ TRÁCH NHIỆM
-**Hệ Sinh Thái USB An Toàn (BTL86) & WebUSB Portal v3.2.0**  
+**Hệ Sinh Thái USB An Toàn & WebUSB Portal v3.2.0**  
 *Căn cứ Luật An toàn thông tin mạng số 86/2015/QH13 và Nghị định số 13/2023/NĐ-CP về Bảo vệ dữ liệu cá nhân*
 
 ---
@@ -32,7 +32,7 @@ Khi tải về, cài đặt ứng dụng hoặc sử dụng cổng chẩn đoán
    - Người dùng cá nhân, cơ quan, tổ chức, trường học được quyền sử dụng toàn bộ tính năng của USB An Toàn và WebUSB Portal hoàn toàn miễn phí.
 2. **Hành vi bị nghiêm cấm:**
    - Nghiêm cấm sử dụng mã nguồn, giải pháp bảo vệ hoặc công cụ của dự án để phát tán phần mềm độc hại, can thiệp trái phép vào hệ thống thông tin của tổ chức, cá nhân khác vi phạm Điều 8 Luật An toàn thông tin mạng.
-   - Nghiêm cấm mạo danh tác giả hoặc thương hiệu USB An Toàn BTL86 nhằm mục đích lừa đảo, trục lợi.
+   - Nghiêm cấm mạo danh tác giả hoặc thương hiệu USB An Toàn nhằm mục đích lừa đảo, trục lợi.
 
 ---
 
@@ -49,5 +49,5 @@ Khi tải về, cài đặt ứng dụng hoặc sử dụng cổng chẩn đoán
 ## 5. ĐẦU MỐI LIÊN HỆ & BÁO CÁO LỖ HỔNG
 Mọi phản hồi kỹ thuật, đề xuất tính năng hoặc thông báo lỗ hổng bảo mật (Vulnerability Disclosure) xin vui lòng gửi về:
 - **Tác giả:** BUI NAM DONG Senior Dev
-- **Dự án:** USB An Toàn (BTL86) & WebUSB Portal
+- **Dự án:** USB An Toàn & WebUSB Portal
 - **Ủng hộ quỹ máy chủ & cà phê:** STK `0779356619` (MB Bank) - BUI NAM DONG

@@ -1,7 +1,7 @@
 /**
  * @file simulation.js
  * @module WebUSB/Simulation
- * @description Mô phỏng tương tác 4 bước bảo vệ của USB An Toàn BTL86.
+ * @description Mô phỏng tương tác 4 bước bảo vệ của USB An Toàn.
  * @author BUI NAM DONG Senior Dev
  * @copyright Copyright © 2026 BUI NAM DONG Senior Dev. All rights reserved.
  * @security Chạy thuần túy Client-side trong DOM, không can thiệp hệ thống máy khách.
@@ -25,7 +25,7 @@ export const SIMULATION_STEPS = [
     step: 2,
     badge: "BƯỚC 2: PHÁO ĐÀI PHÒNG THỦ 🏰",
     badgeClass: "bg-indigo-950 text-indigo-300 border border-indigo-800",
-    title: "Pháo Đài 3 Lớp BTL86 Khóa Chặn",
+    title: "Pháo Đài 3 Lớp Khóa Chặn",
     desc: "Thư mục gốc X:\\ đóng băng quyền Read-Only. Virus bị từ chối truy cập (Access Denied) hoàn toàn.",
     tech: "Phân quyền NTFS ACL chặn tạo file mới, bảo vệ tuyệt đối vùng gốc và thư mục App\\.",
     log: "[NTFS ACL] Quyền ghi bị từ chối 0x80070005! Mã độc bị cô lập 100%.",

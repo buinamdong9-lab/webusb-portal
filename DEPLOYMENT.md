@@ -1,5 +1,5 @@
 # 🚀 HƯỚNG DẪN TRIỂN KHAI HỆ THỐNG LÊN INTERNET (DEPLOYMENT GUIDE)
-## DỰ ÁN WEBUSB PORTAL — CỔNG AN TOÀN USB TRỰC TUYẾN BTL86
+## DỰ ÁN WEBUSB PORTAL — CỔNG AN TOÀN USB TRỰC TUYẾN
 
 ---
 
@@ -76,7 +76,7 @@
 3. Cấu hình dịch vụ `systemd` để tự khởi động cùng hệ thống:
    ```ini
    [Unit]
-   Description=WebUSB Portal BTL86 Service
+   Description=WebUSB Portal Service
    After=network.target
 
    [Service]

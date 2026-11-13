@@ -1,5 +1,5 @@
-# 📜 NHẬT KÝ THAY ĐỔI HỆ THỐNG WEBUSB (CHANGELOG)
-Tất cả các thay đổi về mã nguồn, tài liệu, cấu hình bảo mật của dự án WebUSB đều được lưu vết đầy đủ tại đây theo **ĐIỀU 9** trong [rule.md](file:///d:/USB_AnToan_BTL86_Setup11/USB_AnToan_BTL86_Setup11/webusb/rule.md).
+﻿# 📜 NHẬT KÝ THAY ĐỔI HỆ THỐNG WEBUSB (CHANGELOG)
+Tất cả các thay đổi về mã nguồn, tài liệu, cấu hình bảo mật của dự án WebUSB đều được lưu vết đầy đủ tại đây theo **ĐIỀU 9** trong [rule.md](./rule.md).
 
 ---
 
@@ -11,7 +11,7 @@ Tất cả các thay đổi về mã nguồn, tài liệu, cấu hình bảo m�
   - webusb/styles.css & webusb_deploy/styles.css: Bổ sung style terminal log mô phỏng và hiệu ứng pulse/glow mượt mà.
   - webusb/app.js & webusb_deploy/app.js: Tích hợp khởi động simulation module trong vòng đời DOM.
 - **Mục đích & Lý do:**
-  - Thực hiện chỉ thị nâng cấp trực tiếp từ Senior Dev BÙI NAM ĐÔNG: Cho phép người dùng tải ngay bộ cài đặt mà không bắt buộc phải quét trước; cung cấp trải nghiệm tương tác sinh động giúp người dùng dễ dàng hiểu và an tâm với cơ chế bảo vệ của USB An Toàn BTL86.
+  - Thực hiện chỉ thị nâng cấp trực tiếp từ Senior Dev BÙI NAM ĐÔNG: Cho phép người dùng tải ngay bộ cài đặt mà không bắt buộc phải quét trước; cung cấp trải nghiệm tương tác sinh động giúp người dùng dễ dàng hiểu và an tâm với cơ chế bảo vệ của USB An Toàn.
 - **Kết quả nghiệm thu:**
   - dotnet test: **63/63 test cases Passed 100%**.
   - 100% tệp frontend tuân thủ nghiêm ngặt Điều 8 rule.md (tất cả đều <= 282 dòng/file).
@@ -36,7 +36,7 @@ Tất cả các thay đổi về mã nguồn, tài liệu, cấu hình bảo m�
 ---
 
 
-## [2026-11-12 15:45:00] - v3.1.0 [QA/QC & UI] Bổ Sung Bộ Test Nghiêm Ngặt & Phần Giới Thiệu Sản Phẩm BTL86
+## [2026-11-12 15:45:00] - v3.1.0 [QA/QC & UI] Bổ Sung Bộ Test Nghiêm Ngặt & Phần Giới Thiệu Sản Phẩm USB An Toàn
 
 - **Tệp tin tác động:**
   - `USB_AnToan_v2.Tests/StrictSecurityAndEdgeCasesTests.cs`: Tạo mới bộ kiểm thử an ninh nghiêm ngặt gồm 17 ca kiểm thử chuyên sâu (phát hiện mã độc đuôi kép, giải cứu thư mục vô hình Alt+0160, xử lý shortcut hỏng/0-byte, chống tràn đường dẫn sâu, dung lượng dị thường, bảo vệ Availability).
@@ -975,28 +975,28 @@ ule.md (Strict Feature Air-Gap): Không đặt file thực thi hoặc bộ cài 
 - **Tác động an ninh (Security Impact):**
   - Đảm bảo tuyệt đối không rò rỉ binary từ web server tĩnh khi chạy bất kỳ HTTP server nào.
 
-## [2026-11-05 11:25:00] - v1.1.0 (Thuật Toán Nhận Diện Tinh Vi: Loại Bỏ Báo Động Giả & Tự Động Nhận Diện USB Đã Bảo Vệ BTL86)
+## [2026-11-05 11:25:00] - v1.1.0 (Thuật Toán Nhận Diện Tinh Vi: Loại Bỏ Báo Động Giả & Tự Động Nhận Diện USB Đã Bảo Vệ)
 
 - **Tệp tin tác động:**
   - `webusb/backend/UsbScanner.cs` (Tạo mới: Bộ máy chẩn đoán tinh vi & Heuristic Engine - 245 dòng)
   - `webusb/backend/Program.cs` (Tái cấu trúc: Sử dụng `UsbScanner`, giảm xuống còn 244 dòng, tự động nhận diện thư mục tĩnh)
   - `webusb/scanner.js` (Cập nhật whitelist thông minh & kiểm tra nội dung `AUTORUN.INF` - 205 dòng)
-  - `webusb/ui.js` (Hỗ trợ trạng thái 100/100 tuyệt đối & giao diện hoàn hảo cho USB đã bảo vệ BTL86)
+  - `webusb/ui.js` (Hỗ trợ trạng thái 100/100 tuyệt đối & giao diện hoàn hảo cho USB đã bảo vệ)
   - `webusb/index.html` (Thêm khối `box-protected-action` hiển thị trạng thái an toàn toàn diện)
-  - `webusb/app.js` (Đồng bộ cờ `isBtl86Protected` qua FSM state)
+  - `webusb/app.js` (Đồng bộ cờ `isProtected` qua FSM state)
 - **Mục đích & Lý do:**
-  - Khắc phục triệt để hiện tượng báo động giả (False Positive) khiến chiếc USB đã được thiết lập bởi phần mềm BTL86 trước đó chỉ được 60/100 điểm.
+  - Khắc phục triệt để hiện tượng báo động giả (False Positive) khiến chiếc USB đã được thiết lập bởi phần mềm USB An Toàn trước đó chỉ được 60/100 điểm.
   - Phân tích sâu nội dung tệp tin thay vì chỉ nhìn vào tên tệp hoặc thuộc tính hệ thống mặc định.
 - **Chi tiết thay đổi:**
   - `[FEAT]` **Danh sách trắng hệ thống Windows (OS Whitelist):** Tự động bỏ qua `System Volume Information`, `$RECYCLE.BIN`, `Recovery`, `$SysReset`, `Config.Msi` (0 điểm trừ).
-  - `[FEAT]` **Phân tích ngữ nghĩa tệp `AUTORUN.INF`:** Đọc nội dung từng dòng. Nếu chỉ chứa `icon=` hoặc `label=` (như biểu tượng lá chắn `ATTT.ico` của BTL86), đánh giá là hoàn toàn lành tính (0 điểm trừ). Chỉ trừ điểm nếu chứa hook thực thi nguy hiểm (`open=*.vbs`, `open=*.exe`, `shellexecute=`).
-  - `[FEAT]` **Nhận diện chữ ký cấu trúc BTL86 Safe USB:** Tự động phát hiện các thành phần:
+  - `[FEAT]` **Phân tích ngữ nghĩa tệp `AUTORUN.INF`:** Đọc nội dung từng dòng. Nếu chỉ chứa `icon=` hoặc `label=` (như biểu tượng lá chắn `ATTT.ico` của USB An Toàn), đánh giá là hoàn toàn lành tính (0 điểm trừ). Chỉ trừ điểm nếu chứa hook thực thi nguy hiểm (`open=*.vbs`, `open=*.exe`, `shellexecute=`).
+  - `[FEAT]` **Nhận diện chữ ký cấu trúc Safe USB:** Tự động phát hiện các thành phần:
     - Thư mục mật mã quân sự `Vung_Bao_Mat` (được bảo vệ, không coi là ẩn độc hại).
     - Thư mục ứng dụng `App` chứa `USB_AnToan_v2.5.exe`.
     - Tệp dữ liệu công cộng `Du_Lieu_Chung`.
     - Khối xác thực `.sec_v2_header`, `.sec_license`, `.sec_lic_backup` và kịch bản `Cuu_Ho_USB_AnToan.bat`.
     - Trích xuất chính xác mã Serial USB phần cứng (`SERIAL:50053BDB`).
-  - `[UI]` **Trải nghiệm Quizz chuẩn xác:** Khi quét USB đã bảo vệ, đạt **100/100 ĐIỂM (AN TOÀN TUYỆT ĐỐI 🛡️)**. Giao diện tự động ẩn nút thanh toán 20k và hiển thị bảng thông báo xanh ngọc: *"✅ USB NÀY ĐÃ ĐƯỢC BẢO VỆ TOÀN DIỆN BỞI BTL86 — SẴN SÀNG IN ẤN"*.
+  - `[UI]` **Trải nghiệm Quizz chuẩn xác:** Khi quét USB đã bảo vệ, đạt **100/100 ĐIỂM (AN TOÀN TUYỆT ĐỐI 🛡️)**. Giao diện tự động ẩn nút thanh toán 20k và hiển thị bảng thông báo xanh ngọc: *"✅ USB NÀY ĐÃ ĐƯỢC BẢO VỆ TOÀN DIỆN — SẴN SÀNG IN ẤN"*.
   - `[TEST]` Kiểm thử trực tiếp trên USB thật `USB_ANTOAN (E:)`: Kết quả 100/100 điểm, 0 mối nguy giả, trích xuất serial `50053BDB` thành công 100%!
 
 ---
@@ -1345,7 +1345,7 @@ ule.md (Strict Feature Air-Gap): Không đặt file thực thi hoặc bộ cài 
   - `webusb/DEBUG_GUIDE.md` (Bổ sung tài liệu mã lỗi `ERR_SCAN_005`)
 - **Mục đích & Lý do:**
   - Khắc phục triệt để tình trạng người dùng chọn nhầm ổ đĩa cứng máy tính (ổ C: hệ điều hành hoặc ổ D: dữ liệu nội bộ).
-  - Đảm bảo an toàn 100% cho máy tính của khách hàng, tuân thủ tiêu chuẩn an toàn thông tin BTL86.
+  - Đảm bảo an toàn 100% cho máy tính của khách hàng, tuân thủ tiêu chuẩn an toàn thông tin.
 - **Chi tiết thay đổi:**
   - `[SEC]` **Hàng rào kiểm soát kép (Dual USB Verification):**
     1. Kiểm tra tên/ký tự ổ đĩa: Từ chối ngay nếu là `C:`, `D:`, `Local Disk`, `Ổ đĩa C`, `Ổ đĩa D`.
@@ -1438,7 +1438,7 @@ ule.md (Strict Feature Air-Gap): Không đặt file thực thi hoặc bộ cài 
 - **Mục đích & Lý do:**
   - Khắc phục triệt để lỗi `SocketException (10013): An attempt was made to access a socket in a way forbidden by its access permissions` do Windows chặn lắng nghe trên cổng 5000 và địa chỉ `0.0.0.0`.
 - **Chi tiết thay đổi:**
-  - `[FIX]` Chuyển sang lắng nghe trên cổng **`8686`** (chuẩn biểu trưng của BTL86) và gán `localhost / 127.0.0.1` để không yêu cầu quyền Administrator của Windows.
+  - `[FIX]` Chuyển sang lắng nghe trên cổng **`8686`** (chuẩn biểu trưng của USB An Toàn) và gán `localhost / 127.0.0.1` để không yêu cầu quyền Administrator của Windows.
   - `[TEST]` Khởi chạy thử nghiệm thành công 100%, server lắng nghe mượt mà tại `http://localhost:8686`.
 
 ---
@@ -1533,7 +1533,7 @@ ule.md (Strict Feature Air-Gap): Không đặt file thực thi hoặc bộ cài 
   - `[DOCS]` **Sổ tay triển khai (`DEPLOYMENT.md`):** Hướng dẫn kết nối tài khoản SePay ngân hàng thật, đưa lên VPS Linux/Windows, cấu hình tên miền và SSL.
   - `[TEST]` **18/18 Unit Tests PASS 100%:** Toàn bộ test suite mật mã, RSA, xóa an toàn và vaccine shortcut đều vượt qua hoàn hảo.
 - **Tác động an ninh (Security Impact):**
-  - Hệ thống đạt mức độ toàn vẹn và an toàn tối đa theo các chuẩn quân sự BTL86 và 15 Điều luật cứng trong `rule.md`.
+  - Hệ thống đạt mức độ toàn vẹn và an toàn tối đa theo các chuẩn bảo mật cao và 15 Điều luật cứng trong `rule.md`.
 
 ---
 
@@ -1724,7 +1724,7 @@ ule.md (Strict Feature Air-Gap): Không đặt file thực thi hoặc bộ cài 
 - **Mục đích & Lý do:**
   - Triển khai toàn diện Bước 1 theo kế hoạch `plan.md`: Xây dựng giao diện web khám sức khỏe USB trực tuyến phong cách Quizz (Gamified UI, Thang điểm 100, Báo cáo rủi ro) và chuẩn bị sẵn module VietQR 20.000đ.
 - **Chi tiết thay đổi:**
-  - `[FEAT]` **Giao diện Quizz Gamified:** Thiết kế thẻ bo góc 3D, hiệu ứng nút bấm tactile, màu sắc Cyber-ATTT BTL86 (Deep Indigo, Emerald, Rose).
+  - `[FEAT]` **Giao diện Quizz Gamified:** Thiết kế thẻ bo góc 3D, hiệu ứng nút bấm tactile, màu sắc Cyber-ATTT (Deep Indigo, Emerald, Rose).
   - `[FEAT]` **Bộ máy trắc nghiệm & chấm điểm an toàn:** Quét đệ quy cây thư mục qua File System Access API, trừ điểm theo loại mã độc (`.lnk`: -5đ, script `.vbs/.wsf`: -15đ, autorun: -20đ), xếp loại nguy hiểm sinh động.
   - `[FEAT]` **Chế độ kiểm thử nhanh (Mock Dev Mode):** Hỗ trợ nút *"Chạy Giả Lập Thử Nghiệm"* để Dev/Tester trải nghiệm toàn bộ luồng mà không cần cắm USB thật.
   - `[FEAT]` **Module VietQR 20k:** Tự động sinh mã VietQR động theo Serial USB kèm bộ đếm ngược 15 phút.
@@ -1997,7 +1997,7 @@ ule.md (Strict Feature Air-Gap): Không đặt file thực thi hoặc bộ cài 
   - Thiết lập dự án WebUSB Portal: Chuyển đổi giải pháp USB An Toàn từ bản cục bộ (Local C#) lên Internet theo mô hình: Bản Test quét virus miễn phí + Cổng thanh toán VietQR 20.000đ tự động cấp bản Chuẩn.
 - **Chi tiết thay đổi:**
   - `[DOCS]` Ban hành bản kế hoạch chi tiết `plan.md` bao gồm: Mô hình kinh doanh phễu chuyển đổi, phân định ranh giới tính năng Test vs Chuẩn, kiến trúc luồng dữ liệu, quy trình VietQR động và lộ trình 4 giai đoạn.
-  - `[SEC]` Ban hành 9 Điều luật cứng trong `rule.md`: Cách ly tính năng Air-Gap, bảo mật Zero-Knowledge, bảo vệ Private Key RSA-2048, chống gian lận thanh toán (Idempotency), tương thích trình duyệt, chuẩn UI quân sự BTL86, kiểm toán, giới hạn độ dài mã nguồn (< 300 dòng/tệp), và quy chuẩn ghi vết nhật ký.
+  - `[SEC]` Ban hành 9 Điều luật cứng trong `rule.md`: Cách ly tính năng Air-Gap, bảo mật Zero-Knowledge, bảo vệ Private Key RSA-2048, chống gian lận thanh toán (Idempotency), tương thích trình duyệt, chuẩn UI quân sự, kiểm toán, giới hạn độ dài mã nguồn (< 300 dòng/tệp), và quy chuẩn ghi vết nhật ký.
 - **Tác động an ninh (Security Impact):**
   - Đảm bảo tính toàn vẹn ngay từ khâu thiết kế, ngăn chặn hoàn toàn việc rò rỉ mã nguồn bản Chuẩn ra Frontend bản Test.
 

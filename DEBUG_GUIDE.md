@@ -1,6 +1,6 @@
 # 🛠️ SỔ TAY GỠ LỖI & PHÁT TRIỂN NHANH (DEBUG & TROUBLESHOOTING GUIDE)
 ## HƯỚNG DẪN CHO LẬP TRÌNH VIÊN VÀ AI AGENT ĐỊNH VỊ VÀ SỬA LỖI TRONG 1 PHÚT
-**Áp dụng:** Toàn bộ hệ thống WebUSB Portal theo **ĐIỀU 15** trong [rule.md](file:///d:/USB_AnToan_BTL86_Setup11/USB_AnToan_BTL86_Setup11/webusb/rule.md)
+**Áp dụng:** Toàn bộ hệ thống WebUSB Portal theo **ĐIỀU 15** trong [rule.md](./rule.md)
 
 ---
 
@@ -60,5 +60,5 @@ Trước khi thông báo hoàn thành bất kỳ task nào, AI Agent bắt buộ
 - [ ] 2. Hàm có bị quá 50 dòng không?
 - [ ] 3. Có khối `catch` nào bị bỏ rỗng không? Có gắn mã lỗi `ERR_xxx` chưa?
 - [ ] 4. Có để lộ file thực thi `.exe` của bản Chuẩn ra Frontend không?
-- [ ] 5. Đã ghi vết thay đổi vào [CHANGELOG.md](file:///d:/USB_AnToan_BTL86_Setup11/USB_AnToan_BTL86_Setup11/webusb/CHANGELOG.md) chưa?
+- [ ] 5. Đã ghi vết thay đổi vào [CHANGELOG.md](./CHANGELOG.md) chưa?
 

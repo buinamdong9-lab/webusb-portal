@@ -18,7 +18,7 @@
 1. **Không tải trộm tệp của người dùng lên Server:**
    - Trình duyệt chỉ phân tích tên tệp, phần mở rộng, kích thước tệp trực tiếp trong RAM của máy khách.
    - Nghiêm cấm mọi hành vi upload nội dung tệp Word, Excel, PDF, ảnh hoặc dữ liệu riêng tư của người dùng lên máy chủ.
-   - Luôn duy trì uy tín bảo mật cao nhất của đơn vị An toàn thông tin quân sự BTL86.
+   - Luôn duy trì uy tín bảo mật cao nhất của đơn vị An toàn thông tin.
 
 ---
 
@@ -56,7 +56,7 @@
 
 ### ĐIỀU 6: QUY CHUẨN THIẾT KẾ GIAO DIỆN (UI/UX MILITARY ATTT STANDARD)
 1. **Phong cách giao diện:**
-   - Thiết kế hiện đại nhưng nghiêm túc, mang bản sắc An toàn thông tin quân sự (BTL86): Tông màu chủ đạo Xanh hải quân (Navy/Slate), Xanh lá an toàn (Emerald/Green), Đỏ cảnh báo nguy hiểm (Rose/Red).
+   - Thiết kế hiện đại nhưng nghiêm túc, mang bản sắc An toàn thông tin: Tông màu chủ đạo Xanh hải quân (Navy/Slate), Xanh lá an toàn (Emerald/Green), Đỏ cảnh báo nguy hiểm (Rose/Red).
    - Biểu tượng lá chắn `🛡️`, ổ khóa `🔐`, trạng thái quét rõ ràng, minh bạch.
 2. **Trải nghiệm thanh toán:**
    - Popup mã VietQR phải hiển thị sắc nét, có nút *"Sao chép số tài khoản"*, *"Sao chép nội dung"*, *"Sao chép số tiền"* để người dùng chuyển khoản thủ công nếu không quét được camera.

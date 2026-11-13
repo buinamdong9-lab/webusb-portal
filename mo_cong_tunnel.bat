@@ -1,8 +1,8 @@
 @echo off
 chcp 65001 >nul
-title [BTL86] Cổng Kết Nối Trực Tuyến Cloudflare Tunnel - SePay Webhook
+title Cổng Kết Nối Trực Tuyến Cloudflare Tunnel - SePay Webhook
 echo =========================================================================
-echo    BỘ TƯ LỆNH 86 — HỆ THỐNG MỞ CỔNG KẾT NỐI INTERNET CHO WEBHOOK SEPAY
+echo    HỆ THỐNG MỞ CỔNG KẾT NỐI INTERNET CHO WEBHOOK SEPAY
 echo =========================================================================
 echo.
 echo [*] Đang thiết lập đường hầm bảo mật kết nối với cổng 8686...
